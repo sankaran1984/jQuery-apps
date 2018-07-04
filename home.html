@@ -11,7 +11,7 @@
 
       // Make a soql call to get list of Bouquets
       $.ajax({
-        type : 'GET',
+        type : 'POST',
         url  : 'https://eu8.salesforce.com/services/data/v43.0/query?q=' +
                'Select Id, Deliver_To__c, Delivery_Date__c, Message__c FROM Bouquet__c',
         headers : {
