@@ -20,7 +20,24 @@
           'Content-Type'  : 'application/json'
         },
         success : function(result) {
-          console.dir(result);
+          // Build header
+          var tableHeader = '<thead><tr>' +
+                          '<th>Deliver To</th>' +
+                          '<th>Deliver Date</th>' +
+                          '<th>Deliver Message</th>' +                         
+                         '</tr></thead>';
+          // Build rows
+          var tableRows = '<tbody>';
+          $.each(result.records, function(i, rec) {
+              tableRows += '<tr>';
+              tableRows += '<td>' + rec.Deliver_To__c + '</td>';
+              tableRows += '<td>' + rec.Delivery_Date__c + '</td>';
+              tableRows += '<td>' + rec.Message__c + '</td>';            
+              tableRows += '</tr>';
+          });
+          tableRows += '</tbody>';
+          
+          $('table').apppend($(tableHeader + tableRows));
         }
       });
     }
