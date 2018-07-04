@@ -6,21 +6,23 @@
   <table></table>
   
   <script>
-    var $ = jQuery.noConflict();
-    var authToken = decodeURI(window.location.href.split('=')[1].split('&')[0]);
-    
-    // Make a soql call to get list of Bouquets
-    $.ajax({
-      type : 'GET',
-      url  : 'https://eu8.salesforce.com/services/data/v43.0/query?q=' +
-             'Select Id, Deliver_To__c, Delivery_Date__c, Message__c FROM Bouquet__c',
-      headers : {
-        'Authorization' : 'Bearer ' + authToken,
-        'Content-Type'  : 'application/json'
-      },
-      success : function(result) {
-        console.dir(result);
-      }
-    });
+    window.onload = function() {
+      var $ = jQuery.noConflict();
+      var authToken = decodeURI(window.location.href.split('=')[1].split('&')[0]);
+
+      // Make a soql call to get list of Bouquets
+      $.ajax({
+        type : 'GET',
+        url  : 'https://eu8.salesforce.com/services/data/v43.0/query?q=' +
+               'Select Id, Deliver_To__c, Delivery_Date__c, Message__c FROM Bouquet__c',
+        headers : {
+          'Authorization' : 'Bearer ' + authToken,
+          'Content-Type'  : 'application/json'
+        },
+        success : function(result) {
+          console.dir(result);
+        }
+      });
+    }
   </script>
 </html>
